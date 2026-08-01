@@ -1,0 +1,33 @@
+{% extends 'base/superadmin_base.html' %}
+
+{% block content %}
+<!-- 🔔 Notification -->
+<h2>Notifications</h2>
+<a href="{% url 'notifications' %}" class="notification-icon">
+    <i data-lucide="bell"></i>
+</a>
+<div class="notification-box">
+
+    <h3>👤 User Logins</h3>
+    {% for user in recent_logins %}
+        <div class="noti-item">
+            {{ user.username }} logged in
+        </div>
+    {% empty %}
+        <p>No recent logins</p>
+    {% endfor %}
+
+    <hr>
+
+    <h3>💰 Payments</h3>
+    {% for sub in recent_payments %}
+        <div class="noti-item">
+            {{ sub.user.username }} purchased {{ sub.plan.name }}
+        </div>
+    {% empty %}
+        <p>No recent payments</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

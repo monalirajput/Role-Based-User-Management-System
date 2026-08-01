@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+
+<button id="pay-btn">Pay Now</button>
+
+<script>
+var options = {
+    "key": "{{ razorpay_key }}",
+    "amount": "{{ amount|floatformat:2 }}",
+    "currency": "INR",
+    "name": "Trading SaaS",
+    "description": "Subscription Payment",
+    "order_id": "{{ order_id }}",
+
+    "handler": function (response){
+        window.location.href = "/payment-success/?payment_id=" + response.razorpay_payment_id +
+                               "&order_id=" + response.razorpay_order_id +
+                               "&signature=" + response.razorpay_signature;
+    }
+};
+
+var rzp = new Razorpay(options);
+
+document.getElementById('pay-btn').onclick = function(e){
+    rzp.open();
+    e.preventDefault();
+}
+</script>
+
+</body>
+</html>

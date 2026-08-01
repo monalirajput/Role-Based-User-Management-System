@@ -1,0 +1,80 @@
+{% extends 'base/user_base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+
+<!-- ✅ POPUP -->
+{% if is_expired %}
+<div id="expiredPopup" class="popup-overlay">
+    <div class="popup-box">
+        <h2>🚫 Your Plan Has Expired</h2>
+        <p>Please renew your plan to continue.</p>
+
+        <button class="renew-btn" onclick="openPlans()">
+            Renew Plan
+        </button>
+    </div>
+</div>
+{% endif %}
+
+<!-- ✅ BLUR WRAPPER -->
+<div class="{% if is_expired %}blur-content{% endif %}">
+
+    <!-- ✅ ONLY DASHBOARD DATA -->
+    <div class="top-cards" style="display:flex; gap:20px; margin-bottom:20px;">
+        
+        <div class="card">
+            <h3>My Orders</h3>
+            <p>5 Orders</p>
+        </div>
+
+        <div class="card">
+            <h3>Account Balance</h3>
+            <p>₹ 1,200</p>
+        </div>
+    <!-- ✅ MT5 CARD -->
+        <div class="card">
+            <h3>MT5 Account</h3>
+
+            {% if mt5 %}
+                <p><strong>Balance:</strong> {{ mt5.balance }}</p>
+                <p><strong>Equity:</strong> {{ mt5.equity }}</p>
+                <p><strong>Profit:</strong> {{ mt5.profit }}</p>
+            {% else %}
+                <p>MT5 not connected</p>
+                <a href="{% url 'save_mt5' %}">
+                    <button>Connect MT5</button>
+                </a>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ✅ PLAN MODAL (ONLY HERE SHOW PACKAGES) -->
+{% if is_expired %}
+<div id="plansModal" class="modal">
+    <div class="modal-content">
+        <h2>Select Plan</h2>
+
+        <div class="plans-container">
+            {% for p in packages %}
+            <div class="plan-card">
+                <h3>{{ p.name }}</h3>
+                <p>₹ {{ p.price }}</p>
+                <p>{{ p.duration }} Days</p>
+
+                <button class="buy-btn" onclick="buyNow({{ p.id }})">
+                   Buy Now
+            </button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

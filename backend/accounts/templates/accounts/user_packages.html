@@ -1,0 +1,31 @@
+{% extends 'base/user_base.html' %}
+
+{% block title %}Packages{% endblock %}
+
+{% block content %}
+
+<h2>Packages</h2>
+
+<div class="cards" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); gap:20px;">
+
+    {% for package in packages %}
+    <div class="card">
+        <h3>{{ package.name }}</h3>
+        <p><strong>Price:</strong> ₹ {{ package.price }}</p>
+        <p><strong>Duration:</strong> {{ package.duration }} Days</p>
+        <p>{{ package.description }}</p>
+
+        <!-- ✅ SINGLE DYNAMIC BUTTON -->
+        
+           <button class="buy-btn" onclick="buyNow({{ p.id }})">
+                Buy Now
+        </button>
+    </div>
+
+    {% empty %}
+        <p>No Packages Available</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

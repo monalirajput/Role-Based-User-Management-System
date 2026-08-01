@@ -1,0 +1,477 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+    overflow-x: hidden;
+    transition: 0.3s;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 240px;
+    height: calc(100vh - 40px);
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: linear-gradient(180deg, #0f172a, #1e293b);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.sidebar h2 {
+    margin-bottom: 25px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.sidebar ul li a svg {
+    width: 20px;
+    height: 20px;
+}
+
+.sidebar ul li a:hover {
+    background: #334155;
+    transform: translateX(4px);
+}
+
+.sidebar ul li a.active {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+      /* ===== HEADER ===== */
+.header {
+    position: fixed;
+    top: 20px;
+    left: 280px;
+    width: calc(100% - 300px);
+    height: 65px;
+    background: #ffffff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+
+    overflow: visible;   /* 🔥 VERY IMPORTANT */
+    z-index: 100;
+}
+
+/* ===== PROFILE MENU ===== */
+.profile-menu {
+    position: relative;
+}
+
+/* PROFILE BUTTON */
+.profile-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8fafc;
+    padding: 6px 12px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+/* DROPDOWN */
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);   /* 🔥 PERFECT ALIGNMENT */
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    min-width: 160px;
+    z-index: 9999;
+
+    /* 🔥 ANIMATION */
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: 0.25s ease;
+}
+
+/* SHOW */
+.profile-dropdown.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* LINKS */
+.profile-dropdown a {
+    display: block;
+    padding: 12px 15px;
+    color: #334155;
+    text-decoration: none;
+}
+
+.profile-dropdown a:hover {
+    background: #f1f5f9;
+}
+/* ===== MAIN ===== */
+.main-content {
+    margin-left: 280px;
+    margin-top: 110px;
+    padding: 30px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ===== CARDS ===== */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    position: relative;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, #3b82f6, #22c55e);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card h3 {
+    color: #64748b;
+}
+
+.card-value {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.card-sub {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    position: fixed;
+    bottom: 15px;
+    left: 280px;
+    width: calc(100% - 300px);
+    height: 45px;
+    background: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* ===== DARK MODE BASE ===== */
+.dark-mode {
+    background: #020617;
+    color: #e2e8f0;
+}
+
+/* HEADER */
+.dark-mode .header {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+/* HEADER TEXT */
+.dark-mode .header-left {
+    color: #e2e8f0;
+}
+
+/* ICON BUTTON (MOON/SUN) */
+.dark-mode .icon-btn {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+/* FIX LUCIDE ICON COLOR */
+.dark-mode svg {
+    stroke: #e2e8f0;   /* 🔥 IMPORTANT */
+}
+
+/* PROFILE */
+.dark-mode .profile-pill {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+/* PROFILE TEXT */
+.dark-mode .profile-text span,
+.dark-mode .profile-text small {
+    color: #e2e8f0;
+}
+
+/* DROPDOWN */
+.dark-mode .profile-dropdown {
+    background: #0f172a;
+}
+
+/* DROPDOWN LINKS */
+.dark-mode .profile-dropdown a {
+    color: #e2e8f0;
+}
+
+.dark-mode .profile-dropdown a:hover {
+    background: #1e293b;
+}
+
+/* MAIN */
+.dark-mode .main-content {
+    background: #020617;
+}
+
+/* CARD */
+.dark-mode .card {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+/* FOOTER */
+.dark-mode .footer {
+    background: #0f172a;
+    color: #94a3b8;
+}
+/* ===== BUTTON (BUY) ===== */
+.buy-btn {
+    background: linear-gradient(135deg, #22c55e, #15803d);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Hover */
+.buy-btn:hover {
+    background: linear-gradient(135deg, #16a34a, #14532d);
+    transform: translateY(-2px);
+}
+
+/* Click */
+.buy-btn:active {
+    transform: scale(0.96);
+}
+
+/* ===== PLAN CARDS ===== */
+.plans-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.plan-card {
+    width: 220px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* ===== PAYMENT BUTTONS ===== */
+.payment-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.pay-btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* Online */
+.online-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.online-btn:hover {
+    background: #1d4ed8;
+}
+
+/* Offline */
+.offline-btn {
+    background: #64748b;
+    color: white;
+}
+
+.offline-btn:hover {
+    background: #475569;
+}
+
+/* ===== BLUR (LOCKED UI) ===== */
+.blur-content {
+    filter: blur(4px);
+    pointer-events: none;
+}
+/* Popup */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Modal */
+.modal {
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    background:white;
+    padding:20px;
+    box-shadow:0 0 15px gray;
+    border-radius:10px;
+}
+.renew-btn {
+    background: linear-gradient(135deg, #4CAF50, #2e7d32);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Hover Effect */
+.renew-btn:hover {
+    background: linear-gradient(135deg, #43a047, #1b5e20);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Click Effect */
+.renew-btn:active {
+    transform: scale(0.97);
+}
+.plans-container {
+    display: flex;              /* ✅ horizontal */
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;            /* ✅ responsive */
+}
+
+.plan-card {
+    width: 220px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.payment-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* Common button style */
+.pay-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.buy-btn {
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.buy-btn:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.buy-btn:active {
+    transform: scale(0.97);
+}

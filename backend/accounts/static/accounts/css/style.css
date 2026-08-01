@@ -1,0 +1,180 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #141e30, #243b55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Form Container */
+.form-container {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Normal Inputs */
+.form-container input:not([type="password"])  {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Password Container */
+.password-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Password Input */
+.password-container input {
+    width: 100%;
+    padding: 12px 40px 12px 12px; /* Space for eye icon */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Eye Icon */
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    color: #555;
+}
+
+.toggle-password:hover {
+    color: #000;
+}
+
+/* Button */
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    background: #243b55;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.form-container button:hover {
+    background: #141e30;
+}
+
+/* Only bottom register link */
+.form-container > a {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    color: #243b55;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.form-container a:hover {
+    text-decoration: underline;
+}
+
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.forgot-password {
+    font-size: 14px;
+    text-decoration: none;
+    color: #1a73e8;
+}
+
+.sub-text {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Sub text under heading */
+.sub-text {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Error message */
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* OTP input styling */
+input[name="otp"] {
+    letter-spacing: 5px;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Smooth button hover */
+.form-container button {
+    transition: all 0.3s ease;
+}
+
+.form-container button:hover {
+    transform: translateY(-2px);
+}
+
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    width: 100%;
+}

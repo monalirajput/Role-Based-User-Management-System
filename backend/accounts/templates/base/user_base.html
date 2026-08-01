@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Panel</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/user.css' %}">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>User Panel</h2>
+
+    <ul>
+        <li>
+            <a href="#" class="active">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i data-lucide="package"></i>
+                <span>Packages</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i data-lucide="log-out"></i>
+                <span>Logout</span>
+            </a>
+
+            <h3>MT5 Account</h3>
+
+        </li>
+    </ul>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+
+    <div class="header-left">
+        Welcome, {{ request.user.username }}
+    </div>
+
+    <div class="header-right">
+
+        <!-- DARK MODE -->
+        <button id="darkToggle" class="icon-btn">
+            <span id="themeIcon">
+                <i data-lucide="moon"></i>
+            </span>
+        </button>
+
+        <!-- PROFILE -->
+        <div class="profile-menu">
+
+            <div class="profile-pill" id="profileBtn">
+
+                <div class="avatar">
+                    {% if request.user.profile_image %}
+                        <img src="{{ request.user.profile_image.url }}" alt="profile">
+                    {% else %}
+                        {{ request.user.username|first|upper }}
+                    {% endif %}
+                </div>
+
+                <div class="profile-text">
+                    <span>{{ request.user.username }}</span>
+                    <small>
+                        {% if request.user.is_superuser %}Admin{% else %}User{% endif %}
+                    </small>
+                </div>
+
+                <i data-lucide="chevron-down"></i>
+            </div>
+
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'login' %}">Logout</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <div class="container">
+
+        <div class="dashboard-cards">
+
+            <div class="card">
+                <h3>My Orders</h3>
+                <p class="card-value">5</p>
+                <span class="card-sub">Total Orders</span>
+            </div>
+
+            <div class="card">
+                <h3>Account Balance</h3>
+                <p class="card-value">₹ 1,200</p>
+                <span class="card-sub">Available Balance</span>
+            </div>
+
+            <div class="card">
+                <h3>Active Plan</h3>
+                <p class="card-value">Premium</p>
+                <span class="card-sub">Valid till 30 days</span>
+            </div>
+
+            <div class="card">
+                <h3>Trades Today</h3>
+                <p class="card-value">12</p>
+                <span class="card-sub">Auto trades executed</span>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 Trading Automation SaaS
+</div>
+<script src="{% static 'accounts/js/user_base.js' %}"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+ <script src="https://unpkg.com/lucide@latest"></script>
+ <script>
+    lucide.createIcons();
+</script>
+</body>
+</html>

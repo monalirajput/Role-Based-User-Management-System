@@ -1,0 +1,54 @@
+{% extends 'base/superadmin_base.html' %}
+{% block content %}
+
+<div class="form-container">
+    <div class="form-card">
+        <h2 class="form-title">
+            {% if form.instance.pk %}
+                Update Package
+            {% else %}
+                Add Package
+            {% endif %}
+        </h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Name</label>
+                {{ form.name }}
+            </div>
+
+            <div class="form-group">
+                <label>Price</label>
+                {{ form.price }}
+            </div>
+
+            <div class="form-group">
+                <label>Duration (Days)</label>
+                {{ form.duration }}
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                {{ form.description }}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-save">
+                    {% if form.instance.pk %}
+                        Update Package
+                    {% else %}
+                        Save Package
+                    {% endif %}
+                </button>
+
+                <a href="{% url 'package_list' %}" class="btn-cancel">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
